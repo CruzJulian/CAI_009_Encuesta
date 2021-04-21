@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566866798314.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3240903988",
+    "id" : "59D99E5A",
+    "lastKnownWriteTime" : 1566875155,
+    "last_content_update" : 1566875155980,
+    "path" : "~/Dropbox/CAI_009_Encuesta/CAI_009_Result/CAI_009_Resultados.rmd",
+    "project_path" : "CAI_009_Result/CAI_009_Resultados.rmd",
+    "properties" : {
+        "cursorPosition" : "544,124",
+        "docOutlineVisible" : "0",
+        "last_setup_crc32" : "778A59F1152379bb",
+        "scrollLine" : "532",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

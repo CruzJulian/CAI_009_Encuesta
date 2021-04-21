@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566064361660.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "29A907CC",
+    "lastKnownWriteTime" : 1566843231,
+    "last_content_update" : 1566843231142,
+    "path" : "~/Dropbox/CAI_009_Encuesta/CAI_009_Result/tidy_black.r",
+    "project_path" : "CAI_009_Result/tidy_black.r",
+    "properties" : {
+        "cursorPosition" : "13,11",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

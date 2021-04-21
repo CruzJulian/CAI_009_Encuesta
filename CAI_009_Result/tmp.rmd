@@ -1,0 +1,419 @@
+---
+title: "Untitled"
+author: "JMCP"
+date: "16/8/2019"
+output: html_document
+---
+
+
+
+
+```{r prepara_1}
+mi_setup %$% extract(diccio[["varnames"]], separar[1]) -> columna_para_separar 
+mi_setup %$% extract(diccio[["tipo_preg"]], separar[1]) -> tipo_columna_para_separar 
+mi_setup %$% extract(diccio[["clase_preg"]], separar[1]) -> clase_columna_para_separar 
+
+datos[[columna_para_separar]] %>% 
+  paste(collapse = ", ") %>% str_split(", ") %>% unlist %>% unique -> niveles
+
+niveles %>% str_collaps(28) %>% unique -> id_niveles
+
+
+Map(str_detect,list(datos[[columna_para_separar]]), niveles) %>% 
+  setNames(id_niveles) %>% 
+  map_df(factor, labels = c("No", "Sí")) -> columna_separada_1
+
+columna_separada_1 %>% 
+  map_df(as.character) %>%  
+  lapply("==", "Sí") %>% 
+  map_dbl(mean) %>% 
+  subset(. > 0.03) %>% 
+  names -> cuales_cols
+
+columna_separada_1 %<>% extract(cuales_cols)
+
+
+tibble(
+  vars = niveles,
+  varnames = id_niveles,
+  tipo_preg = tipo_columna_para_separar,
+  clase_preg = clase_columna_para_separar
+) %>% 
+  filter(varnames %in% cuales_cols) %>% 
+  mutate(id = 100 + row_number()) %>% 
+  bind_rows(diccio) %>% 
+  unique %>% arrange(id) -> diccio
+
+datos %<>% bind_cols(columna_separada_1)
+
+```
+
+
+```{r prepara_2}
+mi_setup %$% extract(diccio[["varnames"]], separar[2]) -> columna_para_separar 
+mi_setup %$% extract(diccio[["tipo_preg"]], separar[2]) -> tipo_columna_para_separar 
+mi_setup %$% extract(diccio[["clase_preg"]], separar[1]) -> clase_columna_para_separar 
+
+datos[[columna_para_separar]] %>% 
+  paste(collapse = ", ") %>% str_split(", ") %>% unlist %>% unique -> niveles
+
+niveles %>% str_collaps(28) %>% unique -> id_niveles
+
+
+Map(str_detect,list(datos[[columna_para_separar]]), niveles) %>% 
+  setNames(id_niveles) %>% 
+  map_df(factor, labels = c("No", "Sí")) -> columna_separada_2
+
+
+columna_separada_2 %>% 
+  map_df(as.character) %>%  
+  lapply("==", "Sí") %>% 
+  map_dbl(mean) %>% 
+  subset(. > 0.03) %>% 
+  names -> cuales_cols
+
+columna_separada_2 %<>% extract(cuales_cols)
+
+# datos %>% View
+
+tibble(
+  vars = niveles,
+  varnames = id_niveles,
+  tipo_preg = tipo_columna_para_separar,
+  clase_preg = clase_columna_para_separar
+) %>% 
+  filter(varnames %in% cuales_cols) %>% 
+  mutate(id = 200 + row_number()) %>% 
+  bind_rows(diccio) %>% 
+  unique %>% arrange(id) -> diccio
+
+datos %<>% bind_cols(columna_separada_2)
+
+
+```
+
+
+```{r prepara_3}
+mi_setup %$% extract(diccio[["varnames"]], separar[3]) -> columna_para_separar 
+mi_setup %$% extract(diccio[["tipo_preg"]], separar[3]) -> tipo_columna_para_separar 
+mi_setup %$% extract(diccio[["clase_preg"]], separar[1]) -> clase_columna_para_separar 
+
+datos[[columna_para_separar]] %>% 
+  paste(collapse = ", ") %>% str_split(", ") %>% unlist %>% unique -> niveles
+
+niveles %>% str_collaps(30) %>% unique -> id_niveles
+
+
+Map(str_detect,list(datos[[columna_para_separar]]), niveles) %>% 
+  setNames(id_niveles) %>% 
+  map_df(factor, labels = c("No", "Sí")) -> columna_separada_3
+
+columna_separada_3 %>% 
+  map_df(as.character) %>%  
+  lapply("==", "Sí") %>% 
+  map_dbl(mean) %>% 
+  subset(. > 0.03) %>% 
+  names -> cuales_cols
+
+columna_separada_3 %<>% extract(cuales_cols)
+
+# datos %>% View
+
+tibble(
+  vars = niveles,
+  varnames = id_niveles,
+  tipo_preg = tipo_columna_para_separar,
+  clase_preg = clase_columna_para_separar
+) %>% 
+  filter(varnames %in% cuales_cols) %>% 
+  mutate(id = 300 + row_number()) %>% 
+  bind_rows(diccio) %>% 
+  unique %>% arrange(id) -> diccio
+
+datos %<>% bind_cols(columna_separada_3)
+
+
+
+```
+
+
+```{r, eval = FALSE}
+datos %>% 
+  glimpse 
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+"timestamp" -> id_var
+"tecno_herram" -> esta_seccion
+
+diccio %$% 
+  extract(varnames, tipo_preg == esta_seccion) -> columnas[[esta_seccion]]
+
+columnas[[esta_seccion]] %>% 
+  map(
+    function(var_name){
+      extract(datos, c(id_var, var_name)) %>% mutate(allocation = 1) -> df_tmp 
+      spread_(df_tmp, key = var_name, value = "allocation", fill = 0) %>% 
+        mutate(timestamp = NULL, '<NA>' = NULL) -> df_spread
+      names(df_spread)%>% tolower %>% 
+    str_replace_all("[:punct:]", "") %>% 
+    str_replace_all("\\s", "_") %>%
+    str_replace_all("[áéíóúñ+<>]", "") %>% 
+    str_trunc(10, ellipsis = "...", side = "center") -> df_names
+    
+      setNames(df_spread, paste(var_name, df_names, sep = "_"))
+
+      }) %>% bind_cols() -> datos_seccion[[esta_seccion]]
+
+
+extract(datos, esta_seccion_cols) %>%
+  map(na.omit) %>% 
+  map(unique) %>% 
+  map(sort) %>% 
+  map2(esta_seccion_cols, tibble) %>% 
+  map(setNames, c("rotulo", "var_name")) %>% 
+  bind_rows() %>% 
+  mutate(datos_sel_names = names(datos_seccion)) -> diccio_seccion[[esta_seccion]]
+
+# datos_seccion[[esta_seccion]] %>% dist %>% tsne %>% as_tibble() -> seccion_tsne
+
+
+
+```
+
+
+
+```{r}
+datos_seccion[[esta_seccion]] %>% dist %>% hclust(method = "ward.D") -> encuesta_hc
+
+encuesta_hc %>% cutree(3) %>% extract(LETTERS, .) -> clusters[[esta_seccion]]
+
+ggdendro::ggdendrogram(encuesta_hc)
+
+```
+
+
+
+```{r}
+clusters %$%
+  table(lenguajes, tecno_herram)
+
+```
+
+
+
+```{r}
+datos_seccion %$% bind_cols(lenguajes, tecno_herram) %>% dist %>% hclust(method = "ward.D") -> encuesta_hc
+
+encuesta_hc %>% cutree(5) %>% extract(LETTERS, .) -> clusters
+
+# ggdendro::ggdendrogram(encuesta_hc)
+
+```
+
+
+
+
+
+
+
+```{r}
+"caracter" -> carac_seccion
+
+diccio %$% 
+  extract(varnames, tipo_preg == carac_seccion) -> carac_seccion_cols
+
+```
+
+
+
+
+```{r}
+i <- 88
+
+diccio %$% 
+  extract(vars, varnames == carac_seccion_cols[i]) %>% 
+  str_wrap(60) -> plot_title
+
+# datos[carac_seccion_cols] %>% glimpse
+
+
+bind_cols(
+  seccion_tsne,
+  datos[carac_seccion_cols[i]]
+  ) %>% 
+  setNames(c("V1", "V2", "Var")) %>% 
+  ggplot +
+  aes(x = V1, y = V2, colour = Var) +
+ geom_point(size = 1.4) +
+ # scale_color_ipsum() +
+ theme_modern_rc() +   guides(colour=guide_legend(ncol=3)) +
+  theme(
+     axis.line = element_blank(), 
+     axis.title = element_blank(), 
+     axis.text = element_blank(), 
+     legend.position="bottom"
+     ) -> point_graph
+
+
+bind_cols(
+  seccion_tsne,
+  datos[carac_seccion_cols[i]]
+  ) %>% 
+  setNames(c("V1", "V2", "Var")) %>% 
+  ggplot +
+  aes(x = Var, fill = Var) +
+ geom_bar() +
+ # scale_color_ipsum() +
+ theme_modern_rc() + 
+  # labs(title = plot_title) +   guides(colour=guide_legend(ncol=3)) +
+  theme(
+     axis.line = element_blank(), 
+     axis.title = element_blank(), 
+     axis.text = element_blank(),
+     legend.position="none"
+     ) -> bar_plot
+
+
+arrangeGrob(
+  top = plot_title,
+  grobs = list(point_graph, bar_plot),
+  widths = c(7, 3)
+) -> final_graph
+
+grid.arrange(final_graph)
+
+    ggsave(file="img.svg", plot=final_graph, width=10, height=8)
+
+
+p_title <- ggplot(data.frame(x = 1:2, y = 1:10)) +
+  labs(x = NULL, y = NULL,
+       title = plot_title,
+       subtitle = "Comparison of the US women's team to all former champions and the 2019 finalist, the Netherlands. Stats are shown for all tournament matches excluding third\nplace playoffs. Stars indicate world champions, triangles lost matches. Scored points are calculated based on the 3-1-0 scheme.") +
+  theme(line = element_blank(),
+        panel.background = element_rect(fill = "transparent"),
+        plot.background = element_rect(fill = "transparent", color = "transparent"),
+        panel.border = element_rect(color = "transparent"),
+        axis.text = element_blank())
+
+p_title + point_graph + bar_plot + plot_layout(widths = c(0, 1, 0.9))
+        
+```
+
+
+```{r}
+i <- 8
+
+diccio %$% 
+  extract(vars, varnames == esta_seccion_cols[i]) %>% 
+  str_wrap(60) -> plot_title
+
+
+bind_cols(
+  seccion_tsne,
+  datos[esta_seccion_cols[i]]
+  ) %>% 
+  setNames(c("V1", "V2", "Var")) %>% 
+  ggplot +
+  aes(x = V1, y = V2, colour = Var) +
+ geom_point(size = 1.4) +
+ # scale_color_ipsum() +
+ theme_modern_rc() + 
+  labs(title = plot_title) +   guides(colour=guide_legend(ncol=3)) +
+  theme(
+     axis.line = element_blank(), 
+     axis.title = element_blank(), 
+     axis.text = element_blank(), 
+     legend.position="bottom"
+     )
+
+```
+
+
+
+
+
+
+```{r}
+i <- 2
+
+diccio %$% 
+  extract(vars, varnames == carac_seccion_cols[i]) %>% 
+  str_wrap(60) -> plot_title
+
+
+bind_cols(
+  seccion_tsne,
+  datos[carac_seccion_cols[i]]
+  ) %>% 
+  setNames(c("V1", "V2", "Var")) %>% 
+  ggplot +
+  aes(x = V1, y = V2, colour = Var) +
+ geom_point(size = 1.4) +
+ # scale_color_ipsum() +
+ theme_modern_rc() + 
+  labs(title = plot_title) +   guides(colour=guide_legend(ncol=3)) +
+  theme(
+     axis.line = element_blank(), 
+     axis.title = element_blank(), 
+     axis.text = element_blank(), 
+     legend.position="bottom"
+     )
+
+```
+
+
+```{r}
+i <- 43
+
+diccio %$% 
+  extract(vars, varnames == esta_seccion_cols[i]) %>% 
+  str_wrap(60) -> plot_title
+
+
+bind_cols(
+  seccion_tsne,
+  datos[esta_seccion_cols[i]]
+  ) %>% 
+  setNames(c("V1", "V2", "Var")) %>% 
+  ggplot +
+  aes(x = V1, y = V2, colour = Var) +
+ geom_point(size = 1.4) +
+ # scale_color_ipsum() +
+ theme_modern_rc() + 
+  labs(title = plot_title) +   guides(colour=guide_legend(ncol=3)) +
+  theme(
+     axis.line = element_blank(), 
+     axis.title = element_blank(), 
+     axis.text = element_blank(), 
+     legend.position="bottom"
+     )
+
+```
+
+
+
+

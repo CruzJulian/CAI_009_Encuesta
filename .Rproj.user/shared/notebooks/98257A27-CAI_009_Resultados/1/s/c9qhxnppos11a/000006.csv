@@ -1,0 +1,26 @@
+"0",""
+"0","datos_seccion %>% dist %>% tsne %>% as_tibble() -> seccion_tsne"
+"2","sigma summary: Min. : 0.276933694817231 |1st Qu. : 0.432566408084755 |Median : 0.485402484095638 |Mean : 0.497318438253159 |3rd Qu. : 0.550534914667944 |Max. : 0.948724194712163 |
+"
+"2","Epoch: Iteration #100 error is: 19.7483224509
+"
+"2","Epoch: Iteration #200 error is: 0.967915277378596
+"
+"2","Epoch: Iteration #300 error is: 0.94305785937119
+"
+"2","Epoch: Iteration #400 error is: 0.936844975036889
+"
+"2","Epoch: Iteration #500 error is: 0.935067775393795
+"
+"2","Epoch: Iteration #600 error is: 0.934394717930378
+"
+"2","Epoch: Iteration #700 error is: 0.934081127806517
+"
+"2","Epoch: Iteration #800 error is: 0.933922504786437
+"
+"2","Epoch: Iteration #900 error is: 0.933834876758404
+"
+"2","Epoch: Iteration #1000 error is: 0.933784955290861
+"
+"2","`as_tibble.matrix()` requires a matrix with column names or a `.name_repair` argument. Using compatibility `.name_repair`.
+[90mThis warning is displayed once per session.[39m"

@@ -1,0 +1,117 @@
+"vars";"varnames";"tipo_preg";"clase_preg";"id"
+"Timestamp";"timestamp";"tiempo";"tiempo";1
+"¿Cuál es tu situación laboral actual?";"cul_es_tu...l_actual";"caracter";"caracter";2
+"¿Cuál de los siguientes se aproxima más a tu cargo actual? Selecciona todos los que apliquen.";"cul_de_lo...apliquen";"caracter";"caracter";3
+"¿Cuál de las siguientes actividades realizas en tu trabajo? Selecciona todas las que apliquen.";"cul_de_la...apliquen";"caracter";"caracter";4
+"¿Qué porcentaje de tu tiempo laboral dedicas específicamente al análisis y visualización de datos, creación de modelos o actividades relacionadas con datos (data cleaning, investigación, etc)?";"qu_porcen...acin_etc";"caracter";"caracter";5
+"Aproximadamente, ¿cuántos empleados tiene la empresa u organización donde trabajas?";"aproximad...trabajas";"caracter";"caracter";6
+"¿En qué tipo de empresa u organización trabajas?";"en_qu_tip...trabajas";"caracter";"caracter";7
+"¿Cuál es la principal industria o sector al que pertenece la empresa u organización donde trabajas? (Opcional)";"cul_es_la...opcional";"caracter";"caracter";8
+"¿Cuál es el monto de tu salario MENSUAL en PESOS COLOMBIANOS (COP)?";"cul_es_el...anos_cop";"caracter";"caracter";9
+"¿Qué tan seguido trabajas remotamente?";"qu_tan_se...otamente";"caracter";"caracter";10
+"¿Cuántos años TOTALES de experiencia laboral tienes en cargos relacionados con TECNOLOGÍA?";"cuntos_ao...ecnologa";"caracter";"caracter";11
+"¿Cuántos años de experiencia laboral tienes en trabajos ESPECÍFICAMENTE relacionados con DATOS (Machine Learning, Data Science o Analytics)?";"cuntos_ao...nalytics";"caracter";"caracter";12
+"¿Cuál es el mayor nivel de educación formal que has completado?";"cul_es_el...mpletado";"caracter";"caracter";13
+"¿Cómo has aprendido Machine Learning, Data Science y/o Analytics? Selecciona todos los que apliquen.";"cmo_has_a...apliquen";"caracter";"caracter";14
+"¿Cuánto tiempo pasó desde que iniciaste la búsqueda (de tu trabajo) hasta que empezaste tu trabajo actual? (Opcional)";"cunto_tie...opcional";"caracter";"caracter";15
+"De los siguientes lenguajes de programación, ¿cuáles usas y con qué frecuencia? [C / C++]";"de_los_si...cia_c__c";"lenguajes";"comportamientos";16
+"De los siguientes lenguajes de programación, ¿cuáles usas y con qué frecuencia? [C#]";"de_los_si...uencia_c";"lenguajes";"comportamientos";17
+"De los siguientes lenguajes de programación, ¿cuáles usas y con qué frecuencia? [Java]";"de_los_si...cia_java";"lenguajes";"comportamientos";18
+"De los siguientes lenguajes de programación, ¿cuáles usas y con qué frecuencia? [JavaScript / Node.js]";"de_los_si...__nodejs";"lenguajes";"comportamientos";19
+"De los siguientes lenguajes de programación, ¿cuáles usas y con qué frecuencia? [Julia]";"de_los_si...ia_julia";"lenguajes";"comportamientos";20
+"De los siguientes lenguajes de programación, ¿cuáles usas y con qué frecuencia? [Matlab / Octave]";"de_los_si...__octave";"lenguajes";"comportamientos";21
+"De los siguientes lenguajes de programación, ¿cuáles usas y con qué frecuencia? [PHP]";"de_los_si...ncia_php";"lenguajes";"comportamientos";22
+"De los siguientes lenguajes de programación, ¿cuáles usas y con qué frecuencia? [Python]";"de_los_si...a_python";"lenguajes";"comportamientos";23
+"De los siguientes lenguajes de programación, ¿cuáles usas y con qué frecuencia? [SQL]";"de_los_si...ncia_sql";"lenguajes";"comportamientos";24
+"De los siguientes lenguajes de programación, ¿cuáles usas y con qué frecuencia? [R]";"de_los_si...uencia_r";"lenguajes";"comportamientos";25
+"De los siguientes lenguajes de programación, ¿cuáles usas y con qué frecuencia? [Ruby]";"de_los_si...cia_ruby";"lenguajes";"comportamientos";26
+"De los siguientes lenguajes de programación, ¿cuáles usas y con qué frecuencia? [Rust / Go / Dart / Elixir]";"de_los_si...__elixir";"lenguajes";"comportamientos";27
+"De los siguientes lenguajes de programación, ¿cuáles usas y con qué frecuencia? [Scala]";"de_los_si...ia_scala";"lenguajes";"comportamientos";28
+"De los siguientes lenguajes de programación, ¿cuáles usas y con qué frecuencia? [Swift / Objective-C / Kotlin]";"de_los_si...__kotlin";"lenguajes";"comportamientos";29
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Apache Storm]";"de_los_si...he_storm";"tecno_herram";"comportamientos";30
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Apache Spark]";"de_los_si...he_spark";"tecno_herram";"comportamientos";31
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [ArcGIS]";"de_los_si...a_arcgis";"tecno_herram";"comportamientos";32
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [AWS ]";"de_los_si...cia_aws_";"tecno_herram";"comportamientos";33
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Azure]";"de_los_si...ia_azure";"tecno_herram";"comportamientos";34
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Caffe]";"de_los_si...ia_caffe";"tecno_herram";"comportamientos";35
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [CNTK]";"de_los_si...cia_cntk";"tecno_herram";"comportamientos";36
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Core ML]";"de_los_si..._core_ml";"tecno_herram";"comportamientos";37
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Deeplearning4j]";"de_los_si...arning4j";"tecno_herram";"comportamientos";38
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [ElasticSearch]";"de_los_si...icsearch";"tecno_herram";"comportamientos";39
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [H2O]";"de_los_si...ncia_h2o";"tecno_herram";"comportamientos";40
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Hadoop]";"de_los_si...a_hadoop";"tecno_herram";"comportamientos";41
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Google Cloud]";"de_los_si...le_cloud";"tecno_herram";"comportamientos";42
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Excel]";"de_los_si...ia_excel";"tecno_herram";"comportamientos";43
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Hive]";"de_los_si...cia_hive";"tecno_herram";"comportamientos";44
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [IBM Watson]";"de_los_si...m_watson";"tecno_herram";"comportamientos";45
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Jupyter]";"de_los_si..._jupyter";"tecno_herram";"comportamientos";46
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Kafka]";"de_los_si...ia_kafka";"tecno_herram";"comportamientos";47
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Kibana]";"de_los_si...a_kibana";"tecno_herram";"comportamientos";48
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Knime]";"de_los_si...ia_knime";"tecno_herram";"comportamientos";49
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Gephi]";"de_los_si...ia_gephi";"tecno_herram";"comportamientos";50
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Logstash]";"de_los_si...logstash";"tecno_herram";"comportamientos";51
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [MySQL]";"de_los_si...ia_mysql";"tecno_herram";"comportamientos";52
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [MongoDB]";"de_los_si..._mongodb";"tecno_herram";"comportamientos";53
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [MXNet]";"de_los_si...ia_mxnet";"tecno_herram";"comportamientos";54
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Neo4j]";"de_los_si...ia_neo4j";"tecno_herram";"comportamientos";55
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Oracle]";"de_los_si...a_oracle";"tecno_herram";"comportamientos";56
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Pandas]";"de_los_si...a_pandas";"tecno_herram";"comportamientos";57
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [PostgreSQL]";"de_los_si...stgresql";"tecno_herram";"comportamientos";58
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [PowerBI]";"de_los_si..._powerbi";"tecno_herram";"comportamientos";59
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [PyTorch / Torch]";"de_los_si...h__torch";"tecno_herram";"comportamientos";60
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Qlik Sense]";"de_los_si...ik_sense";"tecno_herram";"comportamientos";61
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Redis]";"de_los_si...ia_redis";"tecno_herram";"comportamientos";62
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Rapidminer]";"de_los_si...pidminer";"tecno_herram";"comportamientos";63
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [SAS]";"de_los_si...ncia_sas";"tecno_herram";"comportamientos";64
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [SPSS]";"de_los_si...cia_spss";"tecno_herram";"comportamientos";65
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Scikit-learn]";"de_los_si...kitlearn";"tecno_herram";"comportamientos";66
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [SQL Server]";"de_los_si...l_server";"tecno_herram";"comportamientos";67
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Stata]";"de_los_si...ia_stata";"tecno_herram";"comportamientos";68
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Tableau]";"de_los_si..._tableau";"tecno_herram";"comportamientos";69
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [TensorFlow]";"de_los_si...nsorflow";"tecno_herram";"comportamientos";70
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Tidyverse]";"de_los_si...idyverse";"tecno_herram";"comportamientos";71
+"Adicional a los lenguajes, frameworks, librerías y herramientas listados arriba, ¿hay algún otro que uses regularmente en tu trabajo?";"adicional..._trabajo";"otros";"otros";72
+"¿Cuáles de las siguientes técnicas usas regularmente en tu trabajo? Selecciona todas los que apliquen. (Opcional)";"cules_de_...opcional";"otros";"otros";73
+"¿En qué ciudad vives actualmente?";"en_qu_ciu...ualmente";"caracter";"caracter";74
+"¿Cuál es tu rango de edad?";"cul_es_tu..._de_edad";"caracter";"caracter";75
+"¿Con qué género te identificas?";"con_qu_gn...ntificas";"caracter";"caracter";76
+"De los siguientes frameworks, librerías, tecnologías y herramientas, ¿cuáles usas y con qué frecuencia? [Keras]";"de_los_si...ia_keras";"tecno_herram";"comportamientos";77
+"Desarrollador Back-End / Front-End / Full-Stack";"desarrollador...d__fullstack";"caracter";"caracter";101
+"Analista de Datos";"analista_de_datos";"caracter";"caracter";102
+"Científico de Datos";"cientfico_de_datos";"caracter";"caracter";103
+"Ingeniero de Datos";"ingeniero_de_datos";"caracter";"caracter";104
+"Ingeniero de Machine Learning";"ingeniero_de_...ine_learning";"caracter";"caracter";105
+"Lider de Equipo / Manager / Ejecutivo";"lider_de_equi...r__ejecutivo";"caracter";"caracter";106
+"Administrador de Bases de Datos";"administrador...ses_de_datos";"caracter";"caracter";107
+"Product Manager";"product_manager";"caracter";"caracter";108
+"Analista de Negocios";"analista_de_negocios";"caracter";"caracter";109
+"Estudiante";"estudiante";"caracter";"caracter";110
+"Docente / Educador";"docente__educador";"caracter";"caracter";111
+"Investigador Académico";"investigador_acadmico";"caracter";"caracter";112
+"Administrador de Sistemas / Especialista en DevOps";"administrador...ta_en_devops";"caracter";"caracter";113
+"Creación y mantenimiento de infraestructura de datos almacenamiento";"creacin_y_man...macenamiento";"caracter";"caracter";201
+"ETL";"etl";"caracter";"caracter";202
+"etc";"etc";"caracter";"caracter";203
+"Desarrollo de software para recoger y procesar datos";"desarrollo_de...ocesar_datos";"caracter";"caracter";204
+"Análisis de datos usando métodos estadísticos o machine learning";"anlisis_de_da...ine_learning";"caracter";"caracter";205
+"Despliege de modelos de machine learning o estadísticos en producción";"despliege_de_...en_produccin";"caracter";"caracter";206
+"Entrenamiento y validación de modelos de machine learning o estadísticos";"entrenamiento..._estadsticos";"caracter";"caracter";207
+"Generación de reportes e informes";"generacin_de_...s_e_informes";"caracter";"caracter";208
+"Identificación de problemas de negocio que pueden ser resueltos con datos";"identificacin...os_con_datos";"caracter";"caracter";209
+"Visualizaciones de datos y generación de dashboards";"visualizacion...e_dashboards";"caracter";"caracter";210
+"Investigación de nuevos algoritmos y técnicas";"investigacin_...os_y_tcnicas";"caracter";"caracter";211
+"Liderazgo de equipos de analítica y/o ingeniería";"liderazgo_de_...yo_ingeniera";"caracter";"caracter";212
+"No realizo trabajos relacionado con datos";"no_realizo_tr...do_con_datos";"caracter";"caracter";213
+"Especializaciones online";"especializaciones_online";"caracter";"caracter";301
+"Educación formal pregrado";"educacin_formal_pregrado";"caracter";"caracter";302
+"Educación formal posgrado";"educacin_formal_posgrado";"caracter";"caracter";303
+"Cursos online pagos o con certificaciones pagas";"cursos_online_...aciones_pagas";"caracter";"caracter";304
+"Blog posts y Artículos";"blog_posts_y_artculos";"caracter";"caracter";305
+"Cursos online gratis";"cursos_online_gratis";"caracter";"caracter";306
+"Libros";"libros";"caracter";"caracter";307
+"Papers de investigación";"papers_de_investigacin";"caracter";"caracter";308
+"Videos";"videos";"caracter";"caracter";309
+"Conferencias presenciales y Meetups";"conferencias_p...les_y_meetups";"caracter";"caracter";310
+"Cursos presenciales / Cursos de extensión";"cursos_presenc...s_de_extensin";"caracter";"caracter";311
+"Podcasts";"podcasts";"caracter";"caracter";312
+"Especializaciones presenciales";"especializaciones_presenciales";"caracter";"caracter";313

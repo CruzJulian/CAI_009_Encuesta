@@ -1,0 +1,237 @@
+"0","datos %>% 
+  glimpse 
+"
+"1","Observations: 479
+"
+"1","Variables: 77
+"
+"1","$ timestamp            [3m[38;5;246m<dttm>[39m[23m 2019-06-12 19:13:06, 2019-06-12 19:13:42, 2019-06-12 19:13:47, 201…
+"
+"1",""
+"1","$ cul_es_tu...l_actual [3m[38;5;246m<chr>[39m[23m ""Empleado, tiempo completo"", ""Empleado, tiempo completo"", ""Empleado…
+"
+"1",""
+"1","$ cul_de_lo...apliquen [3m[38;5;246m<chr>[39m[23m ""Desarrollador Back-End / Front-End / Full-Stack"", ""Desarrollador B…
+"
+"1",""
+"1","$ cul_de_la...apliquen [3m[38;5;246m<chr>[39m[23m ""Creación y mantenimiento de infraestructura de datos (almacenamien…
+"
+"1",""
+"1","$ qu_porcen...acin_etc [3m[38;5;246m<chr>[39m[23m ""Solo en pocas ocasiones trabajo con análisis de datos o actividade…
+"
+"1",""
+"1","$ aproximad...trabajas [3m[38;5;246m<chr>[39m[23m ""50 a 99"", ""1000 a 4999"", ""50 a 99"", ""500 a 999"", ""20 a 49"", ""5000 …
+"
+"1",""
+"1","$ en_qu_tip...trabajas [3m[38;5;246m<chr>[39m[23m ""Empresa colombiana solo con ventas locales"", ""Empresa colombiana c…
+"
+"1",""
+"1","$ cul_es_la...opcional [3m[38;5;246m<chr>[39m[23m ""SaaS"", ""Otra"", ""SaaS"", ""Fintech"", ""Internet / Servicios Web"", ""Com…
+"
+"1",""
+"1","$ cul_es_el...anos_cop [3m[38;5;246m<dbl>[39m[23m 3500000, 500000, 4000000, 3000000, 10000000, 5500000, 6600000, NA, …
+"
+"1",""
+"1","$ qu_tan_se...otamente [3m[38;5;246m<chr>[39m[23m ""Unos pocos días al mes"", ""Muy rara vez o nunca"", ""Muy rara vez o n…
+"
+"1",""
+"1","$ cuntos_ao...ecnologa [3m[38;5;246m<chr>[39m[23m ""2 años"", ""8 años"", ""2 años"", ""5 años"", ""5 años"", ""Menos de 1 año"",…
+"
+"1",""
+"1","$ cuntos_ao...nalytics [3m[38;5;246m<chr>[39m[23m ""Menos de 1 año"", ""Menos de 1 año"", ""2 años"", ""1 año"", ""1 año"", ""2 …
+"
+"1",""
+"1","$ cul_es_el...mpletado [3m[38;5;246m<chr>[39m[23m ""Posgrado: Master"", ""Pregrado universitario, con título"", ""Pregrado…
+"
+"1",""
+"1","$ cmo_has_a...apliquen [3m[38;5;246m<chr>[39m[23m ""Especializaciones online, Educación formal (pregrado), Educación f…
+"
+"1",""
+"1","$ cunto_tie...opcional [3m[38;5;246m<chr>[39m[23m ""2 a 3 semanas"", ""No recuerdo"", ""2 a 3 semanas"", ""4 a 5 semanas"", ""…
+"
+"1",""
+"1","$ de_los_si...cia_c__c [3m[38;5;246m<chr>[39m[23m NA, NA, NA, ""No lo uso actualmente"", ""Lo uso exclusivamente en proy…
+"
+"1",""
+"1","$ de_los_si...uencia_c [3m[38;5;246m<chr>[39m[23m NA, ""Lo uso en el trabajo regularmente"", NA, NA, ""No lo uso actualm…
+"
+"1",""
+"1","$ de_los_si...cia_java [3m[38;5;246m<chr>[39m[23m NA, NA, ""Lo uso en el trabajo, pero con poca frecuencia"", ""Lo uso e…
+"
+"1",""
+"1","$ de_los_si...__nodejs [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""Lo uso en el trabajo, pero con poca frecuencia"", N…
+"
+"1",""
+"1","$ de_los_si...ia_julia [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", ""No lo uso actualmente"", ""…
+"
+"1",""
+"1","$ de_los_si...__octave [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""No lo uso actualmente…
+"
+"1",""
+"1","$ de_los_si...ncia_php [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""No lo uso actualmente…
+"
+"1",""
+"1","$ de_los_si...a_python [3m[38;5;246m<chr>[39m[23m ""Lo uso exclusivamente en proyectos personales"", ""Lo uso en el trab…
+"
+"1",""
+"1","$ de_los_si...ncia_sql [3m[38;5;246m<chr>[39m[23m NA, ""Lo uso en el trabajo regularmente"", NA, ""Lo uso en el trabajo,…
+"
+"1",""
+"1","$ de_los_si...uencia_r [3m[38;5;246m<chr>[39m[23m ""Lo uso en el trabajo, pero con poca frecuencia"", NA, NA, ""Lo uso e…
+"
+"1",""
+"1","$ de_los_si...cia_ruby [3m[38;5;246m<chr>[39m[23m NA, NA, NA, ""Lo uso exclusivamente en proyectos personales"", ""No lo…
+"
+"1",""
+"1","$ de_los_si...__elixir [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""Lo uso exclusivamente en proyectos personales"", NA…
+"
+"1",""
+"1","$ de_los_si...ia_scala [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""No lo uso actualmente…
+"
+"1",""
+"1","$ de_los_si...__kotlin [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""No lo uso actualmente…
+"
+"1",""
+"1","$ de_los_si...he_storm [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""No lo uso actualmente…
+"
+"1",""
+"1","$ de_los_si...he_spark [3m[38;5;246m<chr>[39m[23m NA, NA, ""Lo uso en el trabajo regularmente"", NA, ""Lo uso en el trab…
+"
+"1",""
+"1","$ de_los_si...a_arcgis [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""No lo uso actualmente…
+"
+"1",""
+"1","$ de_los_si...cia_aws_ [3m[38;5;246m<chr>[39m[23m NA, NA, ""Lo uso en el trabajo, pero con poca frecuencia"", NA, ""Lo u…
+"
+"1",""
+"1","$ de_los_si...ia_azure [3m[38;5;246m<chr>[39m[23m NA, ""Lo uso en el trabajo regularmente"", NA, NA, ""Lo uso en el trab…
+"
+"1",""
+"1","$ de_los_si...ia_caffe [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""No lo uso actualmente…
+"
+"1",""
+"1","$ de_los_si...cia_cntk [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""No lo uso actualmente…
+"
+"1",""
+"1","$ de_los_si..._core_ml [3m[38;5;246m<chr>[39m[23m NA, NA, ""Lo uso en el trabajo regularmente"", NA, ""No lo uso actualm…
+"
+"1",""
+"1","$ de_los_si...arning4j [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""No lo uso actualmente…
+"
+"1",""
+"1","$ de_los_si...icsearch [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+"
+"1",""
+"1","$ de_los_si...ncia_h2o [3m[38;5;246m<chr>[39m[23m ""Lo uso en el trabajo, pero con poca frecuencia"", NA, NA, NA, ""No l…
+"
+"1",""
+"1","$ de_los_si...a_hadoop [3m[38;5;246m<chr>[39m[23m NA, NA, ""Lo uso en el trabajo regularmente"", NA, ""Lo uso en el trab…
+"
+"1",""
+"1","$ de_los_si...le_cloud [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""Lo uso en el trabajo, pero con poca frecuencia"", N…
+"
+"1",""
+"1","$ de_los_si...ia_excel [3m[38;5;246m<chr>[39m[23m ""Lo uso en el trabajo, pero con poca frecuencia"", ""Lo uso en el tra…
+"
+"1",""
+"1","$ de_los_si...cia_hive [3m[38;5;246m<chr>[39m[23m NA, NA, ""Lo uso en el trabajo regularmente"", NA, ""No lo uso actualm…
+"
+"1",""
+"1","$ de_los_si...m_watson [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""No lo uso actualmente…
+"
+"1",""
+"1","$ de_los_si..._jupyter [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+"
+"1",""
+"1","$ de_los_si...ia_kafka [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""No lo uso actualmente…
+"
+"1",""
+"1","$ de_los_si...a_kibana [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+"
+"1",""
+"1","$ de_los_si...ia_knime [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""No lo uso actualmente…
+"
+"1",""
+"1","$ de_los_si...ia_gephi [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""No lo uso actualmente…
+"
+"1",""
+"1","$ de_los_si...logstash [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+"
+"1",""
+"1","$ de_los_si...ia_mysql [3m[38;5;246m<chr>[39m[23m NA, ""Lo uso en el trabajo regularmente"", ""Lo uso en el trabajo regu…
+"
+"1",""
+"1","$ de_los_si..._mongodb [3m[38;5;246m<chr>[39m[23m NA, NA, ""Lo uso en el trabajo regularmente"", NA, ""Lo uso exclusivam…
+"
+"1",""
+"1","$ de_los_si...ia_mxnet [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""No lo uso actualmente…
+"
+"1",""
+"1","$ de_los_si...ia_neo4j [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""No lo uso actualmente…
+"
+"1",""
+"1","$ de_los_si...a_oracle [3m[38;5;246m<chr>[39m[23m NA, ""Lo uso en el trabajo regularmente"", NA, NA, ""No lo uso actualm…
+"
+"1",""
+"1","$ de_los_si...a_pandas [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+"
+"1",""
+"1","$ de_los_si...stgresql [3m[38;5;246m<chr>[39m[23m ""Lo uso en el trabajo, pero con poca frecuencia"", ""Lo uso en el tra…
+"
+"1",""
+"1","$ de_los_si..._powerbi [3m[38;5;246m<chr>[39m[23m NA, NA, NA, ""Lo uso en el trabajo, pero con poca frecuencia"", ""No l…
+"
+"1",""
+"1","$ de_los_si...h__torch [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""Lo uso exclusivamente en proyectos personales"", NA…
+"
+"1",""
+"1","$ de_los_si...ik_sense [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+"
+"1",""
+"1","$ de_los_si...ia_redis [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""No lo uso actualmente…
+"
+"1",""
+"1","$ de_los_si...pidminer [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""Lo uso exclusivamente…
+"
+"1",""
+"1","$ de_los_si...ncia_sas [3m[38;5;246m<chr>[39m[23m ""Lo uso en el trabajo regularmente"", NA, NA, NA, ""No lo uso actualm…
+"
+"1",""
+"1","$ de_los_si...cia_spss [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""No lo uso actualmente…
+"
+"1",""
+"1","$ de_los_si...kitlearn [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""Lo uso en el trabajo, pero con poca frecuencia"", ""…
+"
+"1",""
+"1","$ de_los_si...l_server [3m[38;5;246m<chr>[39m[23m NA, ""Lo uso en el trabajo regularmente"", NA, NA, ""No lo uso actualm…
+"
+"1",""
+"1","$ de_los_si...ia_stata [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+"
+"1",""
+"1","$ de_los_si..._tableau [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", NA, ""Lo uso en el trabajo …
+"
+"1",""
+"1","$ de_los_si...nsorflow [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""Lo uso en el trabajo, pero con poca frecuencia"", N…
+"
+"1",""
+"1","$ de_los_si...idyverse [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""No lo uso actualmente"", ""Lo uso en el trabajo regu…
+"
+"1",""
+"1","$ adicional..._trabajo [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, NA, NA, ""Jupyter Notebooks, PyCharm"", NA, ""vim"", NA…
+"
+"1",""
+"1","$ cules_de_...opcional [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, ""Algoritmos de Optimización, Aprendizaje Supervisad…
+"
+"1",""
+"1","$ en_qu_ciu...ualmente [3m[38;5;246m<chr>[39m[23m ""Bogotá"", ""Bogotá"", ""Otra"", ""Bogotá"", NA, ""Bogotá"", ""Bogotá"", ""Bogo…
+"
+"1",""
+"1","$ cul_es_tu..._de_edad [3m[38;5;246m<chr>[39m[23m ""25 a 29 años"", ""30 a 34 años"", ""20 a 24 años"", ""30 a 34 años"", ""25…
+"
+"1",""
+"1","$ con_qu_gn...ntificas [3m[38;5;246m<chr>[39m[23m ""Hombre"", ""Hombre"", ""Hombre"", ""Hombre"", ""Hombre"", ""Mujer"", ""Hombre""…
+"
+"1",""
+"1","$ de_los_si...ia_keras [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+"

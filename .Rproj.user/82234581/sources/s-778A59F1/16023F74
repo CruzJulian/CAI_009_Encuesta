@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566868131346.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1937355900",
+    "id" : "16023F74",
+    "lastKnownWriteTime" : 1566868928,
+    "last_content_update" : 1566868928358,
+    "path" : "~/Dropbox/CAI_009_Encuesta/CAI_009_Result/img_caracter/convertSVGtoPDF.sh",
+    "project_path" : "CAI_009_Result/img_caracter/convertSVGtoPDF.sh",
+    "properties" : {
+        "cursorPosition" : "6,8",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "sh"
+}

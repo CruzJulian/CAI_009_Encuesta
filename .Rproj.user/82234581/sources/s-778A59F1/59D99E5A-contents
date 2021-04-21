@@ -1,0 +1,603 @@
+---
+title: "Untitled"
+author: "JMCP"
+date: "16/8/2019"
+output: html_document
+---
+
+
+```{r paquetes, echo = FALSE, include = FALSE}
+
+# install.packages("devtools")
+# devtools::install_github("thomasp85/patchwork")
+
+
+# library("googlesheets")
+library("stringr")
+library("readxl")
+library("scales")
+library("knitr")
+library("ggplot2")
+library("dplyr")
+library("tidyr")
+library("esquisse")
+library("patchwork")
+library("hrbrthemes")
+library("tsne")
+library("purrr")
+library("tibble")
+library("magrittr")
+library("png")
+library("grid")
+library("ggplotify")
+
+
+```
+
+```{r setup, echo = FALSE, include = FALSE}
+opts_chunk$set(echo = FALSE, include = FALSE)
+
+mi_setup = list(
+  CAI_data = "Mercado Laboral de Machine Learning & Data Science en Colombia (Responses).xlsx",
+  data_dir = "CAI_009_Datos",
+  separar = c(3, 4, 14),
+  img_dir_comporta = "img_comporta",
+  img_dir_caracter = "img_caracter",
+  datos_limpios_file = "datos_procesados.csv",
+  diccionario_file = "diccionario_procesado.csv"
+)
+
+source("tidy_black.r")
+
+
+```
+
+
+```{r funciones}
+str_collaps <- function(letrero, n){
+letrero %>% 
+    tolower %>% 
+    str_replace_all("[:punct:]", "") %>% 
+    str_replace_all("\\s", "_") %>%
+    str_replace_all("[áéíóúñ+]", "") %>% 
+    str_trunc(n, ellipsis = "...", side = "center")
+}
+
+```
+
+
+```{r carga}
+mi_setup %$%
+  file.path("..", data_dir, CAI_data) %>% 
+  read_excel() -> datos_bruto
+
+
+readPNG("CAI_009_Img/cabezote.png") %>%
+  rasterGrob(interpolate = TRUE) %>% as.ggplot() -> encabezado
+
+readPNG("CAI_009_Img/pie.png") %>%
+  rasterGrob(interpolate = TRUE) %>% as.ggplot() -> pie
+
+
+
+```
+
+
+```{r limpieza}
+tibble(
+  vars = names(datos_bruto),
+  varnames = vars %>% str_collaps(20),
+  tipo_preg = c("tiempo", rep("caracter", 14), rep("lenguajes", 14), rep("tecno_herram", 42), "otros", "otros", rep("caracter", 3), "tecno_herram"),
+  clase_preg = c("tiempo", rep("caracter", 14), rep("comportamientos", 56), "otros", "otros", rep("caracter", 3), "comportamientos")
+) %>% 
+  mutate(
+    id = row_number()
+  ) -> diccio
+
+# diccio %$% unique(varnames)
+
+setNames(datos_bruto, diccio[["varnames"]]) %>% 
+  mutate(
+    # cul_es_el...anos_cop = log(cul_es_el...anos_cop),
+    cul_es_el...anos_cop = cut(cul_es_el...anos_cop, c(0, 1e6, 2e6, 3e6, 4e6, 5e6, 6e6, 8e6, 1e7, Inf)),
+    cul_de_la...apliquen = str_replace_all(cul_de_la...apliquen, "[()]", ""),
+    cmo_has_a...apliquen = str_replace_all(cmo_has_a...apliquen, "[()]", "")
+    ) -> datos
+
+```
+
+
+```{r prepara_1}
+mi_setup %$% extract(diccio[["varnames"]], separar[1]) -> columna_para_separar 
+mi_setup %$% extract(diccio[["tipo_preg"]], separar[1]) -> tipo_columna_para_separar 
+mi_setup %$% extract(diccio[["clase_preg"]], separar[1]) -> clase_columna_para_separar 
+
+datos[[columna_para_separar]] %>% 
+  paste(collapse = ", ") %>% str_split(", ") %>% unlist %>% unique -> niveles
+
+niveles %>% str_collaps(28) %>% unique -> id_niveles
+
+
+Map(str_detect,list(datos[[columna_para_separar]]), niveles) %>% 
+  setNames(id_niveles) %>% 
+  map_df(factor, labels = c("No", "Sí")) -> columna_separada_1
+
+columna_separada_1 %>% 
+  map_df(as.character) %>%  
+  lapply("==", "Sí") %>% 
+  map_dbl(mean) %>% 
+  subset(. > 0.03) %>% 
+  names -> cuales_cols
+
+columna_separada_1 %<>% extract(cuales_cols)
+
+
+tibble(
+  vars = niveles,
+  varnames = id_niveles,
+  tipo_preg = tipo_columna_para_separar,
+  clase_preg = clase_columna_para_separar
+) %>% 
+  filter(varnames %in% cuales_cols) %>% 
+  mutate(id = 100 + row_number()) %>% 
+  bind_rows(diccio) %>% 
+  unique %>% arrange(id) -> diccio
+
+datos %<>% bind_cols(columna_separada_1)
+
+```
+
+
+```{r prepara_2}
+mi_setup %$% extract(diccio[["varnames"]], separar[2]) -> columna_para_separar 
+mi_setup %$% extract(diccio[["tipo_preg"]], separar[2]) -> tipo_columna_para_separar 
+mi_setup %$% extract(diccio[["clase_preg"]], separar[1]) -> clase_columna_para_separar 
+
+datos[[columna_para_separar]] %>% 
+  paste(collapse = ", ") %>% str_split(", ") %>% unlist %>% unique -> niveles
+
+niveles %>% str_collaps(28) %>% unique -> id_niveles
+
+
+Map(str_detect,list(datos[[columna_para_separar]]), niveles) %>% 
+  setNames(id_niveles) %>% 
+  map_df(factor, labels = c("No", "Sí")) -> columna_separada_2
+
+
+columna_separada_2 %>% 
+  map_df(as.character) %>%  
+  lapply("==", "Sí") %>% 
+  map_dbl(mean) %>% 
+  subset(. > 0.03) %>% 
+  names -> cuales_cols
+
+columna_separada_2 %<>% extract(cuales_cols)
+
+# datos %>% View
+
+tibble(
+  vars = niveles,
+  varnames = id_niveles,
+  tipo_preg = tipo_columna_para_separar,
+  clase_preg = clase_columna_para_separar
+) %>% 
+  filter(varnames %in% cuales_cols) %>% 
+  mutate(id = 200 + row_number()) %>% 
+  bind_rows(diccio) %>% 
+  unique %>% arrange(id) -> diccio
+
+datos %<>% bind_cols(columna_separada_2)
+
+
+```
+
+
+```{r prepara_3}
+mi_setup %$% extract(diccio[["varnames"]], separar[3]) -> columna_para_separar 
+mi_setup %$% extract(diccio[["tipo_preg"]], separar[3]) -> tipo_columna_para_separar 
+mi_setup %$% extract(diccio[["clase_preg"]], separar[1]) -> clase_columna_para_separar 
+
+datos[[columna_para_separar]] %>% 
+  paste(collapse = ", ") %>% str_split(", ") %>% unlist %>% unique -> niveles
+
+niveles %>% str_collaps(30) %>% unique -> id_niveles
+
+
+Map(str_detect,list(datos[[columna_para_separar]]), niveles) %>% 
+  setNames(id_niveles) %>% 
+  map_df(factor, labels = c("No", "Sí")) -> columna_separada_3
+
+columna_separada_3 %>% 
+  map_df(as.character) %>%  
+  lapply("==", "Sí") %>% 
+  map_dbl(mean) %>% 
+  subset(. > 0.03) %>% 
+  names -> cuales_cols
+
+columna_separada_3 %<>% extract(cuales_cols)
+
+# datos %>% View
+
+tibble(
+  vars = niveles,
+  varnames = id_niveles,
+  tipo_preg = tipo_columna_para_separar,
+  clase_preg = clase_columna_para_separar
+) %>% 
+  filter(varnames %in% cuales_cols) %>% 
+  mutate(id = 300 + row_number()) %>% 
+  bind_rows(diccio) %>% 
+  unique %>% arrange(id) -> diccio
+
+datos %<>% bind_cols(columna_separada_3)
+
+
+
+```
+
+
+
+
+
+```{r}
+"timestamp" -> id_var
+"comportamientos" -> esta_seccion
+
+diccio %$% 
+  extract(varnames, clase_preg == esta_seccion) -> columnas
+
+columnas %>% 
+  map(
+    function(var_name){
+      extract(datos, c(id_var, var_name)) %>% mutate(allocation = 1) -> df_tmp 
+      spread_(df_tmp, key = var_name, value = "allocation", fill = 0) %>% 
+        mutate(timestamp = NULL, '<NA>' = NULL) -> df_spread
+      names(df_spread)%>% str_collaps(10) -> df_names
+    
+      setNames(df_spread, paste(var_name, df_names, sep = "_"))
+
+      }) %>% bind_cols() -> datos_seccion
+
+
+extract(datos, columnas) %>%
+  map(na.omit) %>% 
+  map(unique) %>% 
+  map(sort) %>% 
+  map2(columnas, tibble) %>% 
+  map(setNames, c("rotulo", "var_name")) %>% 
+  bind_rows() %>% 
+  mutate(datos_sel_names = names(datos_seccion)) -> diccio_seccion
+
+
+```
+
+
+
+```{r, cache=TRUE}
+
+datos_seccion %>% dist %>% tsne %>% as_tibble() -> seccion_tsne
+
+
+
+```
+
+
+
+```{r}
+datos_seccion %>% dist %>% hclust(method = "ward.D") -> encuesta_hc
+
+encuesta_hc %>% cutree(5) -> clusters
+
+datos_seccion %>% 
+  mutate(cluster = clusters) %>% 
+  group_by(cluster) %>% 
+  summarise_all(mean) %>% 
+  mutate(cluster = NULL) -> centers
+
+kmeans(datos_seccion, centers) %$% cluster %>% extract(c("Analytics Jr", "Business", "Analytics Sr", "Data Eng. Jr", "Data Eng. Sr"), .) -> clusters
+
+# ggdendro::ggdendrogram(encuesta_hc)
+
+centers %>% rowSums()
+
+```
+
+
+
+```{r}
+ggplot(data.frame(x = 1:2, y = 1:10)) +
+  labs(x = NULL, y = NULL,
+       title = "Clusters") + 
+  theme(
+    line = element_blank(),
+        # panel.background = element_rect(fill = "transparent"),
+        # plot.background = element_rect(fill = "transparent", color = "transparent"),
+        panel.border = element_rect(color = "transparent"),
+        axis.text = element_blank()) -> p_title
+
+
+bind_cols(
+  seccion_tsne,
+  tibble(cluster = clusters)
+) %>% 
+  setNames(c("V1", "V2", "Var")) %>% 
+  ggplot +
+  aes(x = V1, y = V2, colour = Var) +
+  geom_point(size = 1.4) +
+  guides(fill=guide_legend(ncol=3, title = "")) +
+  # scale_color_ipsum() +
+  theme(
+    legend.position="bottom"
+  ) -> p_clusters
+
+{encabezado + p_title + 
+  p_clusters +
+  # plot_layout(widths = c(0, 1)) + 
+     pie} +
+  plot_layout(ncol = 1, heights = c(1, 0, 5, 1)) -> final_graph
+
+
+    ggsave(file=file.path(mi_setup[["img_dir_comporta"]], "cluster.svg"), plot=final_graph, width=16, height=9)
+    ggsave(file=file.path(mi_setup[["img_dir_caracter"]], "cluster.svg"), plot=final_graph, width=16, height=9)
+
+```
+
+
+
+
+
+
+
+```{r, fig.width = 14, fig.height = 10}
+
+
+for(i in seq(length(columnas))){
+
+
+
+diccio %$% 
+  extract(vars, varnames == columnas[i]) %>% 
+  str_wrap(80) -> plot_title
+
+
+    
+ggplot(data.frame(x = 1:2, y = 1:10)) +
+  labs(x = NULL, y = NULL,
+       title = plot_title) + 
+  theme(
+    line = element_blank(),
+        # panel.background = element_rect(fill = "transparent"),
+        # plot.background = element_rect(fill = "transparent", color = "transparent"),
+        panel.border = element_rect(color = "transparent"),
+        axis.text = element_blank()) -> p_title
+
+
+bind_cols(
+  seccion_tsne,
+  datos[columnas[i]]
+) %>% 
+  setNames(c("V1", "V2", "Var")) %>% 
+  ggplot +
+  aes(x = V1, y = V2, colour = Var) +
+  geom_point(size = 2) + 
+  # scale_color_ipsum() +
+  theme(
+    legend.position="none"
+  ) -> p_tsne
+
+
+bind_cols(
+  variable = datos[[columnas[i]]],
+  cluster = clusters
+) %>% count(variable, cluster) %>% 
+  group_by(cluster) %>% 
+  mutate(
+    n_clus = sum(n),
+    p = n/n_clus, 
+    perc = percent(p),
+    p_alt = p + 0.03,
+    ) %>%
+  ggplot + 
+  geom_col(aes(x = variable, fill = variable, y = p), colour = NA) + 
+  geom_text(aes(x = variable, y = p_alt, label = perc), size = 3, colour = "#2E4A57") +
+  facet_wrap(~cluster, ncol = 5)+
+  guides(fill=guide_legend(ncol=4)) +
+  theme(
+    axis.line = element_blank(), 
+    axis.title = element_blank(), 
+    axis.text = element_blank(), 
+    legend.position="bottom"
+  ) -> p_bar_clusters
+
+
+datos %>% 
+  count_(columnas[i]) %>% 
+  setNames(c("Var", "n")) %>% 
+  mutate(
+    p = prop.table(n), 
+    perc = percent(p),
+    p_alt = p + 0.03,
+    ) %>%
+  ggplot + 
+  geom_col(aes(x = Var, fill = Var, y = p), colour = NA) + 
+  geom_text(aes(x = Var, y = p_alt, label = perc), size = 5, colour = "#2E4A57") +
+  theme(
+    legend.position="none"
+  ) -> p_barplot_big
+
+
+{encabezado + p_title + 
+  {p_barplot_big + p_tsne + plot_layout(widths = c(2, 4))} +
+  # plot_layout(widths = c(0, 1)) + 
+  p_bar_clusters + pie} +
+  plot_layout(ncol = 1, heights = c(2, 0, 7, 4, 1)) -> final_graph
+
+# final_graph
+
+    ggsave(file=file.path(mi_setup[["img_dir_comporta"]], paste0(columnas[i], ".svg")), plot=final_graph, width=16, height=9)
+    # ggsave(file=file.path(mi_setup[["img_dir_comporta"]], paste0(columnas[i], ".pdf")), plot=final_graph, width=18, height=14, device = "pdf")
+
+}
+
+# , heights = c(0, 2, 1)
+```
+
+
+
+```{r}
+"timestamp" -> id_var
+"caracter" -> esta_seccion
+
+diccio %$% 
+  extract(varnames, clase_preg == esta_seccion) -> columnas
+
+
+```
+
+
+
+```{r, fig.width = 14, fig.height = 10}
+
+
+for(i in seq(length(columnas))){
+
+
+
+diccio %$% 
+  extract(vars, varnames == columnas[i]) %>% 
+  str_wrap(80) -> plot_title
+
+ggplot(data.frame(x = 1:2, y = 1:10)) +
+  labs(x = NULL, y = NULL,
+       title = plot_title) + 
+  theme(
+    line = element_blank(),
+        # panel.background = element_rect(fill = "transparent"),
+        # plot.background = element_rect(fill = "transparent", color = "transparent"),
+        panel.border = element_rect(color = "transparent"),
+        axis.text = element_blank()) -> p_title
+
+
+bind_cols(
+  seccion_tsne,
+  datos[columnas[i]]
+) %>% 
+  setNames(c("V1", "V2", "Var")) %>% 
+  ggplot +
+  aes(x = V1, y = V2, colour = Var) +
+  geom_point(size = 2) + 
+  # scale_color_ipsum() +
+  theme(
+    legend.position="none"
+  ) -> p_tsne
+
+
+bind_cols(
+  variable = datos[[columnas[i]]],
+  cluster = clusters
+) %>% count(variable, cluster) %>% 
+  group_by(cluster) %>% 
+  mutate(
+    n_clus = sum(n),
+    p = n/n_clus, 
+    perc = percent(p),
+    p_alt = p + 0.03,
+    ) %>%
+  ggplot + 
+  geom_col(aes(x = variable, fill = variable, y = p), colour = NA) + 
+  geom_text(aes(x = variable, y = p_alt, label = perc), size = 3, colour = "#2E4A57") +
+  facet_wrap(~cluster, ncol = 5)+
+  guides(fill=guide_legend(ncol=4)) +
+  theme(
+    axis.line = element_blank(), 
+    axis.title = element_blank(), 
+    axis.text = element_blank(), 
+    legend.position="bottom"
+  ) -> p_bar_clusters
+
+
+datos %>% 
+  count_(columnas[i]) %>% 
+  setNames(c("Var", "n")) %>% 
+  mutate(
+    p = prop.table(n), 
+    perc = percent(p),
+    p_alt = p + 0.03,
+    ) %>%
+  ggplot + 
+  geom_col(aes(x = Var, fill = Var, y = p), colour = NA) + 
+  geom_text(aes(x = Var, y = p_alt, label = perc), size = 5, colour = "#2E4A57") +
+  theme(
+    axis.line = element_blank(), 
+    axis.title = element_blank(), 
+    axis.text = element_blank(), 
+    legend.position="none"
+  ) -> p_barplot_big
+
+
+{encabezado + p_title + 
+  {p_barplot_big + p_tsne + plot_layout(widths = c(2, 4))} +
+  # plot_layout(widths = c(0, 1)) + 
+  p_bar_clusters + pie} +
+  plot_layout(ncol = 1, heights = c(2, 0, 7, 4, 1)) -> final_graph
+
+
+    ggsave(file=file.path(mi_setup[["img_dir_caracter"]], paste0(columnas[i], ".svg")), plot=final_graph, width=16, height=9)
+    # ggsave(file=file.path(mi_setup[["img_dir_comporta"]], paste0(columnas[i], ".pdf")), plot=final_graph, width=18, height=14, device = "pdf")
+
+    
+}
+
+# , heights = c(0, 2, 1)
+```
+
+
+```{r}
+write.table(x = datos, file = mi_setup[["datos_limpios_file"]], sep = ";", dec = ",", row.names = FALSE, col.names = TRUE)
+write.table(x = diccio, file = mi_setup[["diccionario_file"]], sep = ";", dec = ",", row.names = FALSE, col.names = TRUE)
+
+```
+
+
+```{r}
+diccio %$% vars
+
+```
+
+
+```{r}
+
+diccio %$% extract(varnames, id %in% c(9, 75)) -> variables
+
+datos %>% 
+  extract(variables) %>% 
+  na.omit() %>% 
+  group_by_all() %>%  # resume el valor medio por modalidad y programa
+  count() %>% 
+  ungroup() %>% 
+  mutate(
+    p = prop.table(n),
+    prop = percent(p)
+  ) %>% # una nueva columna con el valor medio en millones
+  ggplot + # comienza una gráfica
+  aes(x = cul_es_el...anos_cop, y = cul_es_tu..._de_edad, fill = p, label = prop) + # componentes estéticos
+  geom_raster() + # rectángulos 
+  geom_text() + # texto
+  scale_fill_continuous(
+    low = "gold3",
+    high = "white"
+      ) + # cambiando el color
+  theme_light() +
+  theme(
+    legend.position = "none"
+  ) -> highlight_table
+
+```
+
+
+
+```{r, fig.width=12, fig.height=5}
+highlight_table
+
+```
+

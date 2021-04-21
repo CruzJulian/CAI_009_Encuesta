@@ -1,0 +1,72 @@
+"0",""
+"0","# install.packages(""devtools"")"
+"0","# devtools::install_github(""thomasp85/patchwork"")"
+"0",""
+"0",""
+"0","# library(""googlesheets"")"
+"0","library(""stringr"")"
+"0","library(""readxl"")"
+"0","library(""scales"")"
+"0","library(""knitr"")"
+"0","library(""ggplot2"")"
+"2","Registered S3 method overwritten by 'dplyr':
+  method           from
+  print.rowwise_df     
+"
+"0","library(""dplyr"")"
+"2","
+Attaching package: ‘dplyr’
+
+"
+"2","The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+"
+"2","The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+"
+"0","library(""tidyr"")"
+"0","library(""esquisse"")"
+"2","Registered S3 methods overwritten by 'htmltools':
+  method               from         
+  print.html           tools:rstudio
+  print.shiny.tag      tools:rstudio
+  print.shiny.tag.list tools:rstudio
+"
+"0","library(""patchwork"")"
+"0","library(""hrbrthemes"")"
+"0","library(""tsne"")"
+"0","library(""purrr"")"
+"2","
+Attaching package: ‘purrr’
+
+"
+"2","The following object is masked from ‘package:scales’:
+
+    discard
+
+"
+"0","library(""tibble"")"
+"0","library(""magrittr"")"
+"2","
+Attaching package: ‘magrittr’
+
+"
+"2","The following object is masked from ‘package:purrr’:
+
+    set_names
+
+"
+"2","The following object is masked from ‘package:tidyr’:
+
+    extract
+
+"
+"0","library(""png"")"
+"0","library(""grid"")"
+"0","library(""ggplotify"")"
+"0",""
+"0",""

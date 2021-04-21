@@ -1,0 +1,3 @@
+"0","write.table(x = datos, file = mi_setup[[""datos_limpios_file""]], sep = "";"", dec = "","", row.names = FALSE, col.names = TRUE)"
+"0","write.table(x = diccio, file = mi_setup[[""diccionario_file""]], sep = "";"", dec = "","", row.names = FALSE, col.names = TRUE)"
+"0",""

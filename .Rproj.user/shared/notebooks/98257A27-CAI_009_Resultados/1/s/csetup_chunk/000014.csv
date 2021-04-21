@@ -1,0 +1,318 @@
+"0","opts_chunk$set(echo = FALSE, include = FALSE)"
+"0",""
+"0","mi_setup = list("
+"0","  CAI_data = ""Mercado Laboral de Machine Learning & Data Science en Colombia (Responses).xlsx"","
+"0","  data_dir = ""CAI_009_Datos"","
+"0","  separar = c(3, 4, 14),"
+"0","  img_dir_comporta = ""img_comporta"","
+"0","  img_dir_caracter = ""img_caracter"","
+"0","  datos_limpios_file = ""datos_procesados.csv"","
+"0","  diccionario_file = ""diccionario_procesado.csv"""
+"0",")"
+"0",""
+"0","source(""tidy_black.r"")"
+"2","Registering fonts with R
+"
+"2","More than one version of regular/bold/italic found for Caladea. Skipping setup for this font.
+"
+"2","Carlito already registered with pdfFonts().
+"
+"2","DejaVu Math TeX Gyre already registered with pdfFonts().
+"
+"2","DejaVu Sans already registered with pdfFonts().
+"
+"2","DejaVu Sans Light already registered with pdfFonts().
+"
+"2","DejaVu Sans Condensed already registered with pdfFonts().
+"
+"2","DejaVu Sans Mono already registered with pdfFonts().
+"
+"2","DejaVu Serif already registered with pdfFonts().
+"
+"2","DejaVu Serif Condensed already registered with pdfFonts().
+"
+"2","Droid Sans Fallback already registered with pdfFonts().
+"
+"2","FreeMono already registered with pdfFonts().
+"
+"2","FreeSans already registered with pdfFonts().
+"
+"2","FreeSerif already registered with pdfFonts().
+"
+"2","Gentium already registered with pdfFonts().
+"
+"2","GentiumAlt already registered with pdfFonts().
+"
+"2","Gentium Basic already registered with pdfFonts().
+"
+"2","Gentium Book Basic already registered with pdfFonts().
+"
+"2","Lato Black already registered with pdfFonts().
+"
+"2","Lato already registered with pdfFonts().
+"
+"2","Lato Hairline already registered with pdfFonts().
+"
+"2","Lato Heavy already registered with pdfFonts().
+"
+"2","Lato Light already registered with pdfFonts().
+"
+"2","Lato Medium already registered with pdfFonts().
+"
+"2","Lato Semibold already registered with pdfFonts().
+"
+"2","Lato Thin already registered with pdfFonts().
+"
+"2","Liberation Mono already registered with pdfFonts().
+"
+"2","Liberation Sans already registered with pdfFonts().
+"
+"2","Liberation Sans Narrow already registered with pdfFonts().
+"
+"2","Liberation Serif already registered with pdfFonts().
+"
+"2","Noto Kufi Arabic already registered with pdfFonts().
+"
+"2","Noto Mono already registered with pdfFonts().
+"
+"2","Noto Naskh Arabic already registered with pdfFonts().
+"
+"2","Noto Naskh Arabic UI already registered with pdfFonts().
+"
+"2","Noto Nastaliq Urdu already registered with pdfFonts().
+"
+"2","Noto Sans already registered with pdfFonts().
+"
+"2","Noto Sans Armenian already registered with pdfFonts().
+"
+"2","Noto Sans Avestan already registered with pdfFonts().
+"
+"2","Noto Sans Balinese already registered with pdfFonts().
+"
+"2","Noto Sans Bamum already registered with pdfFonts().
+"
+"2","Noto Sans Batak already registered with pdfFonts().
+"
+"2","Noto Sans Bengali already registered with pdfFonts().
+"
+"2","Noto Sans Bengali UI already registered with pdfFonts().
+"
+"2","Noto Sans Brahmi already registered with pdfFonts().
+"
+"2","Noto Sans Buginese already registered with pdfFonts().
+"
+"2","Noto Sans Buhid already registered with pdfFonts().
+"
+"2","Noto Sans Canadian Aboriginal already registered with pdfFonts().
+"
+"2","Noto Sans Carian already registered with pdfFonts().
+"
+"2","Noto Sans Cham already registered with pdfFonts().
+"
+"2","Noto Sans Cherokee already registered with pdfFonts().
+"
+"2","Noto Sans Coptic already registered with pdfFonts().
+"
+"2","Noto Sans Cuneiform already registered with pdfFonts().
+"
+"2","Noto Sans Cypriot already registered with pdfFonts().
+"
+"2","Noto Sans Deseret already registered with pdfFonts().
+"
+"2","Noto Sans Devanagari already registered with pdfFonts().
+"
+"2","Noto Sans Devanagari UI already registered with pdfFonts().
+"
+"2","Noto Sans Egyptian Hieroglyphs already registered with pdfFonts().
+"
+"2","Noto Sans Ethiopic already registered with pdfFonts().
+"
+"2","Noto Sans Georgian already registered with pdfFonts().
+"
+"2","Noto Sans Glagolitic already registered with pdfFonts().
+"
+"2","Noto Sans Gothic already registered with pdfFonts().
+"
+"2","Noto Sans Gujarati already registered with pdfFonts().
+"
+"2","Noto Sans Gujarati UI already registered with pdfFonts().
+"
+"2","Noto Sans Gurmukhi already registered with pdfFonts().
+"
+"2","Noto Sans Gurmukhi UI already registered with pdfFonts().
+"
+"2","Noto Sans Hanunoo already registered with pdfFonts().
+"
+"2","Noto Sans Hebrew already registered with pdfFonts().
+"
+"2","Noto Sans Imperial Aramaic already registered with pdfFonts().
+"
+"2","Noto Sans Inscriptional Pahlavi already registered with pdfFonts().
+"
+"2","Noto Sans Inscriptional Parthian already registered with pdfFonts().
+"
+"2","Noto Sans Javanese already registered with pdfFonts().
+"
+"2","Noto Sans Kaithi already registered with pdfFonts().
+"
+"2","Noto Sans Kannada already registered with pdfFonts().
+"
+"2","Noto Sans Kannada UI already registered with pdfFonts().
+"
+"2","Noto Sans Kayah Li already registered with pdfFonts().
+"
+"2","Noto Sans Kharoshthi already registered with pdfFonts().
+"
+"2","Noto Sans Khmer already registered with pdfFonts().
+"
+"2","Noto Sans Khmer UI already registered with pdfFonts().
+"
+"2","Noto Sans Lao already registered with pdfFonts().
+"
+"2","Noto Sans Lao UI already registered with pdfFonts().
+"
+"2","Noto Sans Lepcha already registered with pdfFonts().
+"
+"2","Noto Sans Limbu already registered with pdfFonts().
+"
+"2","Noto Sans Linear B already registered with pdfFonts().
+"
+"2","Noto Sans Lisu already registered with pdfFonts().
+"
+"2","Noto Sans Lycian already registered with pdfFonts().
+"
+"2","Noto Sans Lydian already registered with pdfFonts().
+"
+"2","Noto Sans Malayalam already registered with pdfFonts().
+"
+"2","Noto Sans Malayalam UI already registered with pdfFonts().
+"
+"2","Noto Sans Mandaic already registered with pdfFonts().
+"
+"2","Noto Sans Meetei Mayek already registered with pdfFonts().
+"
+"2","Noto Sans Mongolian already registered with pdfFonts().
+"
+"2","Noto Sans Myanmar already registered with pdfFonts().
+"
+"2","Noto Sans Myanmar UI already registered with pdfFonts().
+"
+"2","Noto Sans New Tai Lue already registered with pdfFonts().
+"
+"2","Noto Sans NKo already registered with pdfFonts().
+"
+"2","Noto Sans Ogham already registered with pdfFonts().
+"
+"2","Noto Sans Ol Chiki already registered with pdfFonts().
+"
+"2","No regular (non-bold, non-italic) version of Noto Sans Old Italic. Skipping setup for this font.
+"
+"2","Noto Sans Old Persian already registered with pdfFonts().
+"
+"2","Noto Sans Old South Arabian already registered with pdfFonts().
+"
+"2","Noto Sans Old Turkic already registered with pdfFonts().
+"
+"2","Noto Sans Oriya already registered with pdfFonts().
+"
+"2","Noto Sans Oriya UI already registered with pdfFonts().
+"
+"2","Noto Sans Osmanya already registered with pdfFonts().
+"
+"2","Noto Sans Phags Pa already registered with pdfFonts().
+"
+"2","Noto Sans Phoenician already registered with pdfFonts().
+"
+"2","Noto Sans Rejang already registered with pdfFonts().
+"
+"2","Noto Sans Runic already registered with pdfFonts().
+"
+"2","Noto Sans Samaritan already registered with pdfFonts().
+"
+"2","Noto Sans Saurashtra already registered with pdfFonts().
+"
+"2","Noto Sans Shavian already registered with pdfFonts().
+"
+"2","Noto Sans Sinhala already registered with pdfFonts().
+"
+"2","Noto Sans Sundanese already registered with pdfFonts().
+"
+"2","Noto Sans Syloti Nagri already registered with pdfFonts().
+"
+"2","Noto Sans Symbols already registered with pdfFonts().
+"
+"2","Noto Sans Syriac Eastern already registered with pdfFonts().
+"
+"2","Noto Sans Syriac Estrangela already registered with pdfFonts().
+"
+"2","Noto Sans Syriac Western already registered with pdfFonts().
+"
+"2","Noto Sans Tagalog already registered with pdfFonts().
+"
+"2","Noto Sans Tagbanwa already registered with pdfFonts().
+"
+"2","Noto Sans Tai Le already registered with pdfFonts().
+"
+"2","Noto Sans Tai Tham already registered with pdfFonts().
+"
+"2","Noto Sans Tai Viet already registered with pdfFonts().
+"
+"2","Noto Sans Tamil already registered with pdfFonts().
+"
+"2","Noto Sans Tamil UI already registered with pdfFonts().
+"
+"2","Noto Sans Telugu already registered with pdfFonts().
+"
+"2","Noto Sans Telugu UI already registered with pdfFonts().
+"
+"2","Noto Sans Thaana already registered with pdfFonts().
+"
+"2","Noto Sans Thai already registered with pdfFonts().
+"
+"2","Noto Sans Thai UI already registered with pdfFonts().
+"
+"2","Noto Sans Tibetan already registered with pdfFonts().
+"
+"2","Noto Sans Tifinagh already registered with pdfFonts().
+"
+"2","Noto Sans Ugaritic already registered with pdfFonts().
+"
+"2","Noto Sans UI already registered with pdfFonts().
+"
+"2","Noto Sans Vai already registered with pdfFonts().
+"
+"2","Noto Sans Yi already registered with pdfFonts().
+"
+"2","Noto Serif already registered with pdfFonts().
+"
+"2","Noto Serif Armenian already registered with pdfFonts().
+"
+"2","Noto Serif Bengali already registered with pdfFonts().
+"
+"2","Noto Serif Devanagari already registered with pdfFonts().
+"
+"2","Noto Serif Georgian already registered with pdfFonts().
+"
+"2","Noto Serif Gujarati already registered with pdfFonts().
+"
+"2","Noto Serif Kannada already registered with pdfFonts().
+"
+"2","Noto Serif Khmer already registered with pdfFonts().
+"
+"2","Noto Serif Lao already registered with pdfFonts().
+"
+"2","Noto Serif Malayalam already registered with pdfFonts().
+"
+"2","Noto Serif Tamil already registered with pdfFonts().
+"
+"2","Noto Serif Telugu already registered with pdfFonts().
+"
+"2","Noto Serif Thai already registered with pdfFonts().
+"
+"2","OpenSymbol already registered with pdfFonts().
+"
+"2","More than one version of regular/bold/italic found for Roboto. Skipping setup for this font.
+"
+"2","More than one version of regular/bold/italic found for Roboto Condensed. Skipping setup for this font.
+"
+"2","New theme missing the following elements: axis.ticks.length.x, axis.ticks.length.x.top, axis.ticks.length.x.bottom, axis.ticks.length.y, axis.ticks.length.y.left, axis.ticks.length.y.right, panel.grid"

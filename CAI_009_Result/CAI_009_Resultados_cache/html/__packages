@@ -1,0 +1,17 @@
+base
+stringr
+readxl
+scales
+knitr
+ggplot2
+dplyr
+tidyr
+esquisse
+patchwork
+hrbrthemes
+tsne
+purrr
+tibble
+magrittr
+extrafont
+gdtools

@@ -1,0 +1,7 @@
+"0","""timestamp"" -> id_var"
+"0","""caracter"" -> esta_seccion"
+"0",""
+"0","diccio %$% "
+"0","  extract(varnames, clase_preg == esta_seccion) -> columnas"
+"0",""
+"0",""
